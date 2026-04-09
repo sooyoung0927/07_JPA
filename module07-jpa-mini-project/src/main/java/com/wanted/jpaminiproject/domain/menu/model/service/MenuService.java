@@ -52,6 +52,5 @@ public class MenuService {
         return categoryList.stream()
                 .map(category -> modelMapper.map(category, CategoryDTO.class))
                 .collect(Collectors.toList());
-
     }
 }

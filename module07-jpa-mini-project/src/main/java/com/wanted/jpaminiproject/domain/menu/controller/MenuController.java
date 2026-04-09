@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/menu")
 public class MenuController {
 
-    private final MenuService menuService;
+     private final MenuService menuService;
 
     //13을 메뉴 코드로서 쓰겠다
     @GetMapping("/{menuCode}")

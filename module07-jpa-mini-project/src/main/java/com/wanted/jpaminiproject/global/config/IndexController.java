@@ -10,5 +10,4 @@ public class IndexController {
     public String mainPage(){
         return "main/main";
     }
-
 }

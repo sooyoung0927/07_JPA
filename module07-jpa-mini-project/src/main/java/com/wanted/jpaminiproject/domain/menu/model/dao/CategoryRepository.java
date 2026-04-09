@@ -20,6 +20,7 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     *  - native query : 실제 SQL 구문을 작성하는 것, From 식제테이뱌ㄹ먕  */
 
     @Query(value = "select * from tbl_category order by category_code", nativeQuery = true)
+
     List<Category> findAllCategory();
 }
 

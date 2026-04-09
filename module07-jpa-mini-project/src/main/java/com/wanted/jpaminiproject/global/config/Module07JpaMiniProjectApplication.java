@@ -9,5 +9,4 @@ public class Module07JpaMiniProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(Module07JpaMiniProjectApplication.class, args);
     }
-
 }

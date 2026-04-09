@@ -26,4 +26,5 @@ public class Category {
 
     @Column(name="ref_category_code")
     private Integer refCategoryCode;
+
 }
