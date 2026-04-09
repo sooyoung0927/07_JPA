@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>원티드 메뉴 레스토랑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        button {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: none;
+            padding: 20px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #764ba2;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2),
+            -5px -5px 15px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(118, 75, 162, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3),
+            -8px -8px 20px rgba(255, 255, 255, 0.1);
+            color: #5a3a7a;
+        }
+
+        button:active {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            button {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .button-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>😈원티드 메뉴 레스토랑😈</h1>
+<div class="button-container">
+    <button onclick="location.href='/menu/13'">🔍 특정 메뉴 조회</button>
+    <button onclick="location.href='/menu/list'">📋 전체 메뉴 조회</button>
+    <button onclick="location.href='/menu/querymethod'">🔎 쿼리메소드</button>
+    <button onclick="location.href='/menu/regist'">➕ 메뉴 등록</button>
+    <button onclick="location.href='/menu/modify'">✏️ 메뉴 수정</button>
+    <button onclick="location.href='/menu/delete'">🗑️ 메뉴 삭제</button>
+</div>
+</body>
+</html>
