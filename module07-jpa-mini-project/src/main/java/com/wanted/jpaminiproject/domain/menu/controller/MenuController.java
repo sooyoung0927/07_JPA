@@ -68,6 +68,37 @@ public class MenuController {
         return menuService.findAllCategory();
     }
 
+//    삭제 코드
+//    @DeleteMapping("delete/{menuCode}")
+//    @ResponseBody // 이거 없으면 delete 못 함 - json으로만 delete 가능
+//    public String deleteTestMethod(@RequestBody MemberDTO memberDTO){
+//        return menuCode+"번 메뉴 삭제 완료";
+//    }
 
+    // 여거 개의 값을 한꺼번에 -> param여러 개 안 쓰고 ModelAttribute로
+    @PostMapping("/regist")
+    public ModelAndView registMenu(@ModelAttribute MenuDTO registMenu, ModelAndView mv){
+        System.out.println("등록 시 화면에서 넘어오는 값 = " + registMenu);
+
+        int menuCode = menuService.registNewMenu(registMenu);
+        System.out.println("Service에서 전달받은 = " + menuCode);
+
+        mv.setViewName("redirect:/menu/"+menuCode);
+        return mv;
+    }
+
+    @GetMapping("/modify")
+    public void modifyPage(){
+    }
+
+    @PostMapping("/modify")
+    public ModelAndView modifyMenuName(@RequestParam int menuCode, @RequestParam String menuName, ModelAndView mv){
+
+        menuService.modifyMenuName(menuCode,menuName);
+
+        mv.setViewName("redirect:/menu/"+menuCode);
+
+        return mv;
+    }
 
 }
