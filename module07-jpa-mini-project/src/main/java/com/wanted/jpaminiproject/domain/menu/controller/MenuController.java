@@ -5,6 +5,7 @@ import com.wanted.jpaminiproject.domain.menu.model.dto.MenuDTO;
 import com.wanted.jpaminiproject.domain.menu.model.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,11 +70,20 @@ public class MenuController {
     }
 
 //    삭제 코드
-//    @DeleteMapping("delete/{menuCode}")
-//    @ResponseBody // 이거 없으면 delete 못 함 - json으로만 delete 가능
-//    public String deleteTestMethod(@RequestBody MemberDTO memberDTO){
-//        return menuCode+"번 메뉴 삭제 완료";
-//    }
+    @GetMapping("/delete")
+    public String delete(){
+        return "menu/delete";
+    }
+
+    @DeleteMapping("delete/{menuCode}")
+    @ResponseBody // 이거 없으면 delete 못 함 - json으로만 delete 가능
+    public String deleteTestMethod(@PathVariable int menuCode){
+
+        menuService.deleteMenu(menuCode);
+
+        return menuCode+"번 메뉴 삭제 완료";
+    }
+
 
     // 여거 개의 값을 한꺼번에 -> param여러 개 안 쓰고 ModelAttribute로
     @PostMapping("/regist")
@@ -100,5 +110,18 @@ public class MenuController {
 
         return mv;
     }
+
+    @GetMapping("/list")
+    public ModelAndView showMenuList(ModelAndView mv){
+
+        List<MenuDTO> menuList = menuService.showMenuList();
+
+        mv.addObject("menuList",menuList);
+        mv.setViewName("menu/list");
+
+        return mv;
+    }
+
+
 
 }

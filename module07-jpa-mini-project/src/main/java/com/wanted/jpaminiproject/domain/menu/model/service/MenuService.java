@@ -97,7 +97,23 @@ public class MenuService {
         foundMenu = foundMenu.changeMenuName(menuName).builder();
         menuRepository.save(foundMenu);
 
+    }
 
 
+    // 전체 메뉴 조회
+    public List<MenuDTO> showMenuList() {
+
+        List<Menu> menuList = menuRepository.findAll();
+
+        return menuList.stream()
+                .map(menu -> modelMapper.map(menu,MenuDTO.class))
+                .collect(Collectors.toList());
+
+    }
+
+    // 메뉴 삭제
+    @Transactional
+    public void deleteMenu(int menuCode) {
+        menuRepository.deleteById(menuCode);
     }
 }
